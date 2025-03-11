@@ -32,7 +32,15 @@ int init_database(){
     return 0;
 }
 
-int main(){
-    init_database;
+int main(int argc, char* argv[]){
+    int db = init_database();
+    
+    if (db != 0){
+        fprintf(stderr,"Error initializing database.\n");
+        return 1;
+    }
+
+    printf("Database started");
+    
     return 0;
 }
