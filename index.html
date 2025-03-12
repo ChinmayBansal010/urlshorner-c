@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>URL Shortener</title>
+</head>
+<body>
+    <h2>Shorten a URL</h2>
+    <input type="text" id="urlInput" placeholder="Enter URL">
+    <button onclick="shortenUrl()">Shorten</button>
+    <p id="result"></p>
+
+    <script>
+        async function shortenUrl() {
+            const url = document.getElementById('urlInput').value;
+            const response = await fetch('http://165.232.174.202/shorten', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ url })
+            });
+            const data = await response.text();
+            document.getElementById('result').innerText = data;
+        }
+    </script>
+</body>
+</html>
